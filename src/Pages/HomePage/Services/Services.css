@@ -1,0 +1,32 @@
+.services-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+}
+
+
+
+@media only screen and (max-width:577px) {
+    /* 577px এর নিচে এই স্টাইল গুলো কাজ করবে।  */
+
+}
+
+@media only screen and (min-width:578px) and (max-width:768px) {
+    /* between 578px to 768px those style will work */
+
+}
+
+@media only screen and (min-width:769)and (max-width:992) {}
+
+/* make services responsive */
+/* @media only screen and (max-width:576px) {
+    .services-container {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+@media only screen and (min-width: 577px) and (max-width: 992px) {
+    .services-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+} */
