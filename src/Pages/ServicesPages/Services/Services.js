@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import Row from 'react-bootstrap/Row';
+import Loading from '../../Shared/Loading/Loading';
 import Service from '../Service/Service';
 import './Services.css'
 
@@ -10,17 +12,21 @@ const Services = () => {
             .then(res => res.json())
             .then(data => setServices(data))
     }, [])
-    // console.log(services)
+    if (!services.length) {
+        return <Loading></Loading>
+    }
+
     return (
-        <div>
-            <h1>This Is Survices Page </h1>
-            <div className="services-container">
+        <div id='services' className='container '>
+            <h1 className='text-primary'> Survices  </h1>
+            <Row xs={1} md={3} className="g-4 ">
                 {
                     services.map(service => <Service
+                        key={service.id}
                         service={service}
                     ></Service>)
                 }
-            </div>
+            </Row>
 
         </div>
     );
