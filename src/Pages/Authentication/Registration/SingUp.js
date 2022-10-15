@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { Form, Button, Row, Col } from 'react-bootstrap';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import SocialLogin from '../SocialLogin/SocialLogin';
@@ -12,6 +12,9 @@ const SingUp = () => {
     const passwordregRef = useRef('');
     const nameRef = useRef('');
     const navigate = useNavigate()
+    const location = useLocation();
+
+    let from = location.state?.from?.pathname || "/";
     const [
         createUserWithEmailAndPassword,
         user,
@@ -32,8 +35,7 @@ const SingUp = () => {
 
         await createUserWithEmailAndPassword(email, password);
         await updateProfile({ displayName: name });
-        navigate('/home');
-
+        navigate(from, { replace: true });
     };
 
     if (error) {
@@ -43,7 +45,7 @@ const SingUp = () => {
         return <Loading></Loading>
     }
     if (user) {
-        navigate('/home')
+        navigate(from, { replace: true });
     }
     return (
         <div className='container w-50 mx-auto '>
