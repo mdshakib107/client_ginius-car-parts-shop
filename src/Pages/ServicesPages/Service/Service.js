@@ -2,11 +2,11 @@ import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './Service.css'
 
 const Service = ({ service }) => {
-    const { id, name, description, img, price } = service;
+    const { _id, name, description, img, price } = service;
     const navigate = useNavigate()
     const navigateServiceDetailId = (id) => {
         navigate(`/service/${id}`)
@@ -23,7 +23,7 @@ const Service = ({ service }) => {
                         <Card.Text>
                             {description}
                         </Card.Text>
-                        <Button onClick={() => navigateServiceDetailId(id)} varient='prymary'>Go Details N</Button>
+                        <Button onClick={() => navigateServiceDetailId(_id)} varient='prymary'>Go Details N</Button>
                         {/* <Link to={`/service/${id}`}>
                             <Button varient='prymary'>Go Details</Button>
                         </Link> */}

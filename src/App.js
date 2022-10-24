@@ -12,6 +12,9 @@ import ServicesDeatails from './Pages/ServicesPages/ServicesDetails/ServicesDeat
 import NotFound from './Pages/Shared/NotFound/NotFound';
 import RequareAuth from './Pages/Authentication/RequareAuth/RequareAuth';
 import ChackOut from './Pages/ChackOut/ChackOut';
+import About from './Pages/About/About';
+import AddService from './Pages/Dashboard/Admin/AddService/AddService';
+import ManageServices from './Pages/Dashboard/Admin/ManageServices/ManageServices';
 
 
 function App() {
@@ -21,11 +24,22 @@ function App() {
       <Routes>
         <Route path="/" element={<Home></Home>}></Route>
         <Route path="/home" element={<Home></Home>}></Route>
+        <Route path="/about" element={<About></About>}></Route>
         <Route path="/services" element={<Services></Services>}>  </Route>
         <Route path="/service/:serviceId" element={<ServicesDeatails></ServicesDeatails>}></Route>
         <Route path='/chackout' element={
           <RequareAuth>
             <ChackOut></ChackOut>
+          </RequareAuth>
+        }></Route>
+        <Route path='/manageservices' element={
+          <RequareAuth>
+            <ManageServices></ManageServices>
+          </RequareAuth>
+        }></Route>
+        <Route path='/addservice' element={
+          <RequareAuth>
+            <AddService></AddService>
           </RequareAuth>
         }></Route>
         <Route path="/exparts" element={<Exparts></Exparts>}></Route>
